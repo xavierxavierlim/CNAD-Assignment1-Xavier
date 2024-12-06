@@ -59,7 +59,7 @@ CREATE TABLE Promotions (
     valid_until DATE NOT NULL,
 );
 
-INSERT INTO membership (tier, hourly_rate, priority_access, max_booking_limit)
+INSERT INTO Membership (tier, hourly_rate, priority_access, max_booking_limit)
 VALUES 
 ('Basic', 30.00, FALSE, 2),
 ('Premium', 20.00, TRUE, 4),
@@ -72,7 +72,10 @@ VALUES
 ('Hyundai Ioniq 5', 'SNK2022G', 'Orchard Road Central', 85, 'Moderate'),
 ('Audi Q4 E-tron', 'SKS3609Z', 'Harbourfront', 45, 'Dirty');
 
-select * from Vehicles;
-select * from Reservations;
+INSERT INTO Promotions (code, discount_percentage, valid_from, valid_until)
+VALUES
+('MerryChristmas2024', 10, '2024-12-01', '2024-12-31'),
+('CODE20', 20, '2024-12-01', '2024-12-05'); 
+
 
 
