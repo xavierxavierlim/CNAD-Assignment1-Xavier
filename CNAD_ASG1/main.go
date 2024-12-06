@@ -39,45 +39,59 @@ func main() {
 	defer db.Close()
 
 	// HTTP Handlers
+	// login user
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		controller.LoginHandler(w, r, db)
 	})
+	// home page
 	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
 		controller.HomeHandler(w, r, db)
 	})
+	// register
 	http.HandleFunc("/register", func(w http.ResponseWriter, r *http.Request) {
 		controller.RegisterHandler(w, r, db)
 	})
+	// user profile
 	http.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request) {
 		controller.ProfileHandler(w, r, db)
 	})
+	// update user details
 	http.HandleFunc("/update", func(w http.ResponseWriter, r *http.Request) {
 		controller.UpdateDetailsHandler(w, r, db)
 	})
+	// user logout
 	http.HandleFunc("/logout", func(w http.ResponseWriter, r *http.Request) {
 		controller.Logout(w, r, db)
 	})
+	// display available vehicles
 	http.HandleFunc("/availableVehicles", func(w http.ResponseWriter, r *http.Request) {
 		controller.AvailableVehiclesHandler(w, r, db)
 	})
+	// make reservation
 	http.HandleFunc("/makeReservation", func(w http.ResponseWriter, r *http.Request) {
 		controller.ReservationHandler(w, r, db)
 	})
+	// display reservation to user
 	http.HandleFunc("/user/reservations", func(w http.ResponseWriter, r *http.Request) {
 		controller.ViewUserReservationsHandler(w, r, db)
 	})
+	// update reservation
 	http.HandleFunc("/user/reservations/modify", func(w http.ResponseWriter, r *http.Request) {
 		controller.ModifyReservationHandler(w, r, db)
 	})
+	// cancel reservation
 	http.HandleFunc("/user/reservations/cancel", func(w http.ResponseWriter, r *http.Request) {
 		controller.CancelReservationHandler(w, r, db)
 	})
+	// display billing details
 	http.HandleFunc("/user/reservations/billing", func(w http.ResponseWriter, r *http.Request) {
 		controller.BillingHandler(w, r, db)
 	})
+	// pay billing
 	http.HandleFunc("/user/reservations/billing/pay", func(w http.ResponseWriter, r *http.Request) {
 		controller.PayHandler(w, r, db)
 	})
+	// display invoice
 	http.HandleFunc("/user/reservations/invoice", func(w http.ResponseWriter, r *http.Request) {
 		controller.InvoiceHandler(w, r, db)
 	})
