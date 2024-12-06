@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reservations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .back-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Reservations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Vehicle Model</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+                <th>Estimated Cost</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}} <!-- Iterates over the reservations -->
+            <tr>
+                <td>{{.Model}}</td>
+                <td>{{.StartTime.Format "2006-01-02 15:04:05"}}</td>
+                <td>{{.EndTime.Format "2006-01-02 15:04:05"}}</td>
+                <td>{{.Status}}</td>
+                <td>${{printf "%.2f" .EstimatedCost}}</td>
+                <td>
+                    {{if and (ne .Status "Cancelled") (ne .Status "Completed")}}
+                    <div class="action-buttons">
+                        <!-- Modify Button -->
+                        {{if ne .Status "Paid"}}
+                        <button onclick="setReservationCookie('{{.ID}}', '/user/reservations/modify')">Modify</button>
+                        {{end}}
+
+                        <!-- Invoice Button -->
+                        {{if eq .Status "Paid"}}
+                        <form method="get" action="/user/reservations/invoice">
+                            <input type="hidden" name="reservation_id" value="{{.ID}}">
+                            <input type="hidden" name="vehicle_id" value="{{.VehicleID}}">
+                            <input type="hidden" name="vehicle_model" value="{{.Model}}">
+                            <input type="hidden" name="start_time" value="{{.StartTime.Format "2006-01-02 15:04:05"}}">
+                            <input type="hidden" name="end_time" value="{{.EndTime.Format "2006-01-02 15:04:05"}}">
+                            <input type="hidden" name="status" value="{{.Status}}">
+                            <input type="hidden" name="estimated_cost" value="{{.EstimatedCost}}">
+                            <button type="submit">Invoice</button>
+                        </form>
+                        {{else}}
+                        <!-- Pay Button -->
+                        <button onclick="setReservationCookie('{{.ID}}', '/user/reservations/billing')">Pay</button>
+                        {{end}}
+
+                        <!-- Cancel Button -->
+                        {{if ne .Status "Paid"}}
+                        <form method="POST" action="/user/reservations/cancel">
+                            <input type="hidden" name="reservation_id" value="{{.ID}}">
+                            <button type="submit">Cancel</button>
+                        </form>
+                        {{end}}
+                    </div>
+                    {{end}}
+                </td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <button class="back-btn" onclick="window.location.href='/home'">Back to Home</button>
+
+    <script>
+        // Function to set a cookie
+        function setReservationCookie(reservationId, redirectUrl) {
+            document.cookie = `reservation_id=${reservationId}; path=/`;
+            window.location.href = redirectUrl;
+        }
+    </script>
+</body>
+</html>

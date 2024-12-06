@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reservation-details, .promocode-form, .payment-form {
+            margin-bottom: 20px;
+        }
+
+        .reservation-details p, .promocode-form label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .reservation-details strong {
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .final-cost {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Details</h1>
+
+        <!-- Reservation Details -->
+        <div class="reservation-details">
+            <p><strong>Reservation ID:</strong> {{.ID}}</p>
+            <p><strong>Vehicle ID:</strong> {{.VehicleID}}</p>
+            <p><strong>Start Date:</strong> {{.StartTime}}</p>
+            <p><strong>End Date:</strong> {{.EndTime}}</p>
+            <p><strong>Estimated Cost:</strong> ${{.EstimatedCost}}</p>
+        </div>
+
+        <!-- Promocode Form -->
+        <div class="promocode-form">
+            <form method="POST" action="/user/reservations/billing">
+                <input type="hidden" name="reservation_id" value="{{.ID}}">
+                <input type="hidden" name="estimated_cost" value="{{.EstimatedCost}}">
+
+                <label for="promocode">Promotion Code (if any):</label>
+                <input type="text" id="promocode" name="promocode" value="">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Display Success Message -->
+        {{if .Success}}
+        <p class="success-message">{{.Success}}</p>
+        {{end}}
+
+        <!-- Final Cost Display -->
+        {{if .FinalCost}}
+        <p class="final-cost">Your final cost is: ${{.FinalCost}}</p>
+        {{end}}
+
+        <!-- Payment Form -->
+        <div class="payment-form">
+            <form method="get" action="/user/reservations/billing/pay">
+                <input type="hidden" name="reservation_id" value="{{.ID}}">
+                <input type="hidden" name="final_cost" value="{{.FinalCost}}">
+                <input type="hidden" name="estimated_cost" value="{{.EstimatedCost}}">
+                <button type="submit">Pay</button>
+            </form>
+        </div>
+
+        <!-- Back Button -->
+        <a href="/user/reservations" class="back-btn">Back to Reservations</a>
+    </div>
+</body>
+</html>

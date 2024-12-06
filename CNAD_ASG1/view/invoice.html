@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .invoice-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .invoice-container p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .invoice-container p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .invoice-footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <h1>Invoice</h1>
+        </div>
+
+        <p><span>Billing ID:</span> {{.BillingID}}</p>
+        <p><span>Amount:</span> ${{.Amount}}</p>
+        <p><span>Payment Status:</span> {{.PaymentStatus}}</p>
+        <p><span>License Plate:</span> {{.LicensePlate}}</p>
+        <p><span>Location:</span> {{.Location}}</p>
+        <p><span>Charge Level:</span> {{.ChargeLevel}}%</p>
+        <p><span>Name:</span> {{.UserName}}</p>
+        <p><span>Email:</span> {{.UserEmail}}</p>
+        <p><span>Phone:</span> {{.UserPhone}}</p>
+        <p><span>Start Date:</span> {{.StartTime}}</p>
+        <p><span>End Date:</span> {{.EndTime}}</p>
+
+        <div class="invoice-footer">
+            <a href="/user/reservations" class="back-btn">Back to Reservations</a>
+        </div>
+    </div>
+</body>
+</html>
