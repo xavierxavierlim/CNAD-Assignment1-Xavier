@@ -50,7 +50,7 @@ func BillingHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 			return
 		}
 
-		if err := tmpl.Execute(w, map[string]interface{}{ // render the html template with reservation details
+		if err := tmpl.Execute(w, map[string]interface{}{ // execute the html template with reservation details
 			"ID":            reservation.ID,
 			"VehicleID":     reservation.VehicleID,
 			"StartTime":     reservation.StartTime,
