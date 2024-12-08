@@ -1,3 +1,24 @@
+Take note: I only started committing yesterday due to issues with GitHub permissions that prevented me from committing to my own repository. I was only able to resolve the problem yesterday, which is why there are currently only a few commits.
+
+Key Features:
+- User Management 
+    - Registration, login and updates to profile details
+    - Membership tiers (Basic, Premium, VIP) with different hourly rates
+    - Modify reservation dates, view reservation history and view invoices
+
+- Vehicle Management
+    - Display available vehicles based on specified dates
+    - Provide a estimated cost based on the number of days (hours) and membership tier
+
+- Reservation Management
+    - Allow users to make reservations to available vehicles 
+    - Allow users to modify and cancel reservations
+  
+- Billing Mangement
+    - Allow users to pay for their reservations
+    - Calculate the final cost based on membership tier and any valid promotion codes
+    - Generate detailed invoices after payment is successfully made
+
 The design of this microservices-based system focuses on achieving modularity, scalability, and efficient communication through RESTful APIs. The core functionality is distributed across several independent microservices, each responsible for a specific domain, ensuring clear separation of concerns. To maintain data consistency and reduce redundancy, all server components share a centralised database, with each microservice interacting exclusively with its designated table within the database. This design choice allows for streamlined data management while enabling microservices to operate independently, facilitating scalability, ease of maintenance, and flexibility for future enhancements.
 
 On the client side, users and computers interact with the system through a collection of web-based user interfaces (UIs). These include the User Service Web UI, Vehicle Service Web UI, Reservation Service Web UI, and Payment Service Web UI, each catering to distinct aspects of the system's functionality. For instance, the User Service Web UI facilitates user management, such as login, register and profile updates; the Vehicle Service Web UI supports vehicle-related operations, such as the displaying of available vehicles; the Reservation Service Web UI handles reservation activities such as making bookings within specified dates; and the Payment Service Web UI manages billing and invoices. These UIs send and receive requests to backend services via an API Gateway, which acts as a central point for managing traffic, ensuring security, and routing requests to the appropriate microservices.
