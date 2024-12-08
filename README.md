@@ -19,8 +19,9 @@ Key Features:
     - Calculate the final cost based on membership tier and any valid promotion codes
     - Generate detailed invoices after payment is successfully made
 
-Link to architecture diagram: https://github.com/user-attachments/assets/b3311fc1-f10c-43f5-83dd-57a6561a4bd3)
-If you are not able to view this, please view the PNG image or the Adobe XD file (CNAD_Xavier_ASG1_ArchitectureDiagram) inside my repository. 
+Link to architecture diagram: https://github.com/user-attachments/assets/b3311fc1-f10c-43f5-83dd-57a6561a4bd3
+
+If you are not able to view the architecture diagram, please view the PNG image or the Adobe XD file (CNAD_Xavier_ASG1_ArchitectureDiagram) inside my repository. 
 
 The design of this microservices-based system focuses on achieving modularity, scalability, and efficient communication through RESTful APIs. The core functionality is distributed across several independent microservices, each responsible for a specific domain, ensuring clear separation of concerns. To maintain data consistency and reduce redundancy, all server components share a centralised database, with each microservice interacting exclusively with its designated table within the database. This design choice allows for streamlined data management while enabling microservices to operate independently, facilitating scalability, ease of maintenance, and flexibility for future enhancements.
 
