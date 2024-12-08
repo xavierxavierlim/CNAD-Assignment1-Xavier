@@ -4,7 +4,7 @@ Key Features:
 - User Management 
     - Registration, login and updates to profile details
     - Membership tiers (Basic, Premium, VIP) with different hourly rates
-    - Modify reservation dates, view reservation history and view invoices
+    - Modify and cancel reservation dates, view reservation history and view invoices
 
 - Vehicle Management
     - Display available vehicles based on specified dates
