@@ -8,7 +8,7 @@ Key Features:
 
 - Vehicle Management
     - Display available vehicles based on specified dates
-    - Provide a estimated cost based on the number of days (hours) and membership tier
+    - Provide an estimated cost based on the number of days (hours) and membership tier
 
 - Reservation Management
     - Allow users to make reservations to available vehicles 
