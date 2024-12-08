@@ -2,7 +2,7 @@ Take note: I only started committing yesterday due to issues with GitHub permiss
 
 Key Features:
 - User Management 
-    - Registration, login and updates to profile details
+    - Registration, login and view and update profile details
     - Membership tiers (Basic, Premium, VIP) with different hourly rates
     - Modify and cancel reservation dates, view reservation history and view invoices
 
