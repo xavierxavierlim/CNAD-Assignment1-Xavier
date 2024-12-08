@@ -1,5 +1,7 @@
 Take note: I only started committing yesterday due to issues with GitHub permissions that prevented me from committing to my own repository. I was only able to resolve the problem yesterday, which is why there are currently only a few commits.
 
+In the video, under the "View Profile" section, the membership details under "Membership Benefits" should show "Hourly Rate" instead of "Hourly Rate Discount".
+
 Key Features:
 - User Management 
     - Registration, login and view and update profile details
@@ -16,7 +18,7 @@ Key Features:
   
 - Billing Mangement
     - Allow users to pay for their reservations
-    - Calculate the final cost based on membership tier and any valid promotion codes
+    - Calculate the final cost based on teh duration of the reservation, membership tier and any valid promotion codes
     - Generate detailed invoices after payment is successfully made
 
 Link to architecture diagram: https://github.com/user-attachments/assets/b3311fc1-f10c-43f5-83dd-57a6561a4bd3
