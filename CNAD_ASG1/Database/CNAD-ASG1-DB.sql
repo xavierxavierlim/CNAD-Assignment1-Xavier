@@ -77,5 +77,9 @@ VALUES
 ('MerryChristmas2024', 10, '2024-12-01', '2024-12-31'),
 ('CODE20', 20, '2024-12-01', '2024-12-05'); 
 
+select * from Users;
+select * from Reservations where user_id = 2;
+select * from Billing where user_id = 2;
+
 
 
