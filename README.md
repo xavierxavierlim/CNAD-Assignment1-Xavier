@@ -1,6 +1,6 @@
 Take note: I only started committing yesterday due to issues with GitHub permissions that prevented me from committing to my own repository. I was only able to resolve the problem yesterday, which is why there are currently only a few commits.
 
-In the video, under the "View Profile" section, the membership details under "Membership Benefits" should show "Hourly Rate" instead of "Hourly Rate Discount".
+In the video, under the "View Profile" section, the membership details under "Membership Benefits" should show "Hourly Rate" instead of "Hourly Rate Discount". The video is uploaded to brightspace as I am not able to commit it to my repository here. 
 
 Key Features:
 - User Management 
