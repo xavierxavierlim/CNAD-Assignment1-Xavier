@@ -56,7 +56,7 @@ CREATE TABLE Promotions (
     code VARCHAR(50) UNIQUE NOT NULL,
     discount_percentage DECIMAL(5, 2) NOT NULL,
     valid_from DATE NOT NULL,
-    valid_until DATE NOT NULL,
+    valid_until DATE NOT NULL
 );
 
 INSERT INTO Membership (tier, hourly_rate, priority_access, max_booking_limit)
@@ -77,9 +77,7 @@ VALUES
 ('MerryChristmas2024', 10, '2024-12-01', '2024-12-31'),
 ('CODE20', 20, '2024-12-01', '2024-12-05'); 
 
-select * from Users;
-select * from Reservations where user_id = 2;
-select * from Billing where user_id = 2;
+
 
 
 
