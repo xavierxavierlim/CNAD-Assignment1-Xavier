@@ -1,3 +1,22 @@
+Key Features:
+- User Management 
+    - Registration, login and updates to profile details
+    - Membership tiers (Basic, Premium, VIP) with different hourly rates
+    - Modify reservation dates, view reservation history and view invoices
+
+- Vehicle Management
+    - Display available vehicles based on specified dates
+    - Provide a estimated cost based on the number of days (hours) and membership tier
+
+- Reservation Management
+    - Allow users to make reservations to available vehicles 
+    - Allow users to modify and cancel reservations
+  
+- Billing Mangement
+    - Allow users to pay for their reservations
+    - Calculate the final cost based on membership tier and any valid promotion codes
+    - Generate detailed invoices after payment is successfully made
+
 The design of this microservices-based system focuses on achieving modularity, scalability, and efficient communication through RESTful APIs. The core functionality is distributed across several independent microservices, each responsible for a specific domain, ensuring clear separation of concerns. To maintain data consistency and reduce redundancy, all server components share a centralised database, with each microservice interacting exclusively with its designated table within the database. This design choice allows for streamlined data management while enabling microservices to operate independently, facilitating scalability, ease of maintenance, and flexibility for future enhancements.
 
 On the client side, users and computers interact with the system through a collection of web-based user interfaces (UIs). These include the User Service Web UI, Vehicle Service Web UI, Reservation Service Web UI, and Payment Service Web UI, each catering to distinct aspects of the system's functionality. For instance, the User Service Web UI facilitates user management, such as login, register and profile updates; the Vehicle Service Web UI supports vehicle-related operations, such as the displaying of available vehicles; the Reservation Service Web UI handles reservation activities such as making bookings within specified dates; and the Payment Service Web UI manages billing and invoices. These UIs send and receive requests to backend services via an API Gateway, which acts as a central point for managing traffic, ensuring security, and routing requests to the appropriate microservices.
@@ -8,4 +27,4 @@ The API Gateway facilitates communication between the client-side UIs and the se
 
 The server side manages data retrieval, insertion and updates data from a centralised database, which ensures consistency across the system, with each table in the database representing a distinct data domain. By sharing a single database, the architecture minimizes duplication of data while maintaining clear boundaries between microservices through table-level isolation. This design balances modularity and centralised data management, allowing the system to scale and adapt to changing requirements efficiently. Overall, this architecture is robust, flexible, and designed for scalability, supporting independent updates and maintenance of microservices.
 
-To set up and run the microservices, follow these steps. First, update the go.mod file by changing the module name to match the name of the folder containing all the project files. Next, modify the main.go file by updating the controller path to reflect your folder structure. The path should include your folder name, followed by the name of the nested folder, and "client" (e.g., "CNAD-ASSIGNMENT1-XAVIER/CNAD_ASG1/client"). Similarly, in the client folder, update the model path in all files to point to your folder name, followed by the nested folder and "server" (e.g., "CNAD-ASSIGNMENT1-XAVIER/CNAD_ASG1/server"). Once these modifications are complete, you can execute the main.go file to run the entire application.
+To set up and run the microservices, follow these steps. Firstly, clone the repository into your local machine from GitHub. Secondly, install the required packages, which are "github.com/go-sql-driver/mysql" for connecting to the database, and "github.com/joho/godotenv" for loading the environment variables from the env file. Thirdly, update the go.mod file by changing the module name to match the name of the folder containing all the project files. Fourthly, modify the main.go file by updating the controller path to reflect your folder structure. The path should include your folder name, followed by the name of the nested folder, and "client" (e.g., "CNAD-ASSIGNMENT1-XAVIER/CNAD_ASG1/client"). Lastly, in the client folder, update the model path in all files to point to your folder name, followed by the nested folder and "server" (e.g., "CNAD-ASSIGNMENT1-XAVIER/CNAD_ASG1/server"). Once these modifications are complete, you can execute the main.go file to run the entire application.
